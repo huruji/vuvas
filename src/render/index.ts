@@ -36,6 +36,7 @@ const createApp = (...args) => {
       if(key === 'style') {
         el.setStyle(nextValue)
       }
+      el.setProps({ [key]: nextValue })
     },
     insert(child, parent, anchor){
       if (child && parent) {

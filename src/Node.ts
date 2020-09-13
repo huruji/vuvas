@@ -25,6 +25,9 @@ export class Node<T = any> {
     }
     return true;
   }
+  setProps(props: Record<string, any>) {
+    this.props = Object.assign({}, this.props, props)
+  }
   public appendChild = (child: Node, anchor?: Node) => {
     if(!anchor) {
       this.children.push(child)

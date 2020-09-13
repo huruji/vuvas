@@ -1,6 +1,7 @@
 <template>
   <View :style="viewStyle">
     <Text :style="style">text</Text>
+    <Image :style="imageStyle" src="http://pic.netbian.com/uploads/allimg/200909/214821-1599659301e316.jpg" />
   </View>
 </template>
 
@@ -22,9 +23,11 @@ export default {
         height: 150,
       },
       style: {
-        height: 100,
-        flex: 1,
+        height: 50,
         fontSize: 30
+      },
+      imageStyle: {
+        height: 100
       }
     }
   }

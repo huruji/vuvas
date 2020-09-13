@@ -97,7 +97,6 @@ export default class Text extends Node {
 
   customDrawer(text: string) {
     if (this._isPureText) return
-    debugger;
     const frame = this.frame;
     let content = ''
     if (frame.width > 0) {
@@ -119,7 +118,6 @@ export default class Text extends Node {
         frame: getFrameFromNode(node),
         content,
       };
-      debugger;
       applyTextStyle(this.canvas, options);
       if (textPropsChanged(options, this._drawed)) {
         this._measured = measureText(this.canvas, options);
@@ -131,7 +129,6 @@ export default class Text extends Node {
         this.height = height
         this.container.draw(true)
       } else {
-        debugger;
         drawText(this.canvas, options, lines);
       }
     }
