@@ -125,7 +125,7 @@ export default class Text extends Node {
       }
       const [lines, height] = this._measured;
       if (height !== this.height) {
-        // this.style!.height = height
+        this.setStyle({ ...this.style, height })
         this.height = height
         this.container.draw(true)
       } else {
