@@ -2,7 +2,7 @@
   <View :style="styles.container">
     <Navbar title="Overview"/>
     <View :style="styles.entries">
-      <Entry label="Component" :onPress="() => {console.log('1234')}" />
+      <Entry label="Component" :onPress="log" />
     </View>
   </View>
 </template>
@@ -16,6 +16,15 @@ export default {
   components: {
     Navbar,
     Entry
+  },
+  data() {
+
+  },
+  methods: {
+    log(str) {
+      debugger;
+      console.log('str')
+    }
   },
   setup() {
     const count = ref(0);

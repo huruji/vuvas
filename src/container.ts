@@ -1,4 +1,5 @@
-import { Node, RevasTouchEvent } from './Node';
+import { Node, VuvasTouchEvent } from './Node';
+import { emitTouch, getNodeByTouch } from './touch';
 
 import { Vuvas } from './Vuvas'
 import { drawNode } from './draw';
@@ -46,18 +47,18 @@ export class Container {
     this._root = root;
   }
 
-  public handleTouch = (evt: RevasTouchEvent) => {
+  public handleTouch = (evt: VuvasTouchEvent) => {
     const { _root } = this;
     if (_root) {
       const emitted = new WeakSet<Node>();
-      // Object.values(evt.touches).forEach(touch => {
-      //   const node = getNodeByTouch(_root, evt.type, touch);
-      //   // check if node is unmounted
-      //   if (node.parent && !emitted.has(node)) {
-      //     emitted.add(node);
-      //     // emitTouch(node, evt);
-      //   }
-      // });
+      Object.values(evt.touches).forEach(touch => {
+        const node = getNodeByTouch(_root, evt.type, touch);
+        // check if node is unmounted
+        if (node.parent && !emitted.has(node)) {
+          emitted.add(node);
+          emitTouch(node, evt);
+        }
+      });
     }
   };
 

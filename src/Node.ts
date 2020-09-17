@@ -6,6 +6,7 @@ export class Frame {
 }
 
 export class Node<T = any> {
+  public _style:Record<string, any> = {}
   public readonly children: Node[] = [];
   public frame = new Frame();
   public parent?: Node;
@@ -56,26 +57,26 @@ export class Node<T = any> {
   }
 
   setStyle = (style: any) => {
-    this.style = style || {}
+    this.style = Object.assign({}, style || {}, this._style)
   }
 }
 
-export interface RevasTouch {
+export interface VuvasTouch {
   identifier: number;
   x: number;
   y: number;
 }
 
-export type RevasTouchType = 'touchstart' | 'touchmove' | 'touchend';
+export type VuvasTouchType = 'touchstart' | 'touchmove' | 'touchend';
 
-export interface RevasTouchEvent {
+export interface VuvasTouchEvent {
   type: RevasTouchType;
   touches: { [key: string]: RevasTouch };
   timestamp: number;
   [key: string]: any;
 }
 
-export type RevasTouchEventListener = (event: RevasTouchEvent) => any;
+export type VuvasTouchEventListener = (event: VuvasTouchEvent) => any;
 
 export interface BaseProps {
   children?: any;

@@ -25,6 +25,8 @@
   "dependencies": {
     "@vue/runtime-core": "^3.0.0-rc.10",
     "@vue/runtime-dom": "^3.0.0-rc.10",
+    "bezier-easing": "^2.1.0",
+    "hammer-touchemulator": "0.0.2",
     "jsdom": "^16.4.0",
     "jsdom-global": "^3.0.2",
     "pretty": "^2.0.0",

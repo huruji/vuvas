@@ -1,5 +1,8 @@
+import 'hammer-touchemulator'
+
+import { Node, VuvasTouch, VuvasTouchEvent } from '../Node'
+
 import { Container } from '../container'
-import { Node } from '../Node'
 import Text from '../components/Text'
 import View from '../components/View'
 import { Vuvas } from '../vuvas'
@@ -10,6 +13,51 @@ function createCanvas(scale: number) {
   const canvas = document.createElement('canvas');
   return canvas;
 }
+
+function getNodePosition(node: any): [number, number] {
+  let top = 0;
+  let left = 0;
+
+  while (node) {
+    top += node.offsetTop;
+    left += node.offsetLeft;
+    node = node.offsetParent;
+  }
+  return [top, left];
+}
+
+function initTouch(dom: HTMLElement, handler: (e: any) => any) {
+  dom.addEventListener('touchstart', handler, false);
+  dom.addEventListener('touchmove', handler, false);
+  dom.addEventListener('touchend', handler, false);
+  dom.addEventListener('touchcancel', handler, false);
+  return () => {
+    dom.removeEventListener('touchstart', handler, false);
+    dom.removeEventListener('touchmove', handler, false);
+    dom.removeEventListener('touchend', handler, false);
+    dom.removeEventListener('touchcancel', handler, false);
+  };
+}
+
+function createVuvasTouchEvent(e: TouchEvent): VuvasTouchEvent {
+  e.preventDefault();
+  e.stopPropagation();
+  const touches: { [key: number]: VuvasTouch } = {};
+  const type: any = e.type === 'touchcancel' ? 'touchend' : e.type;
+  Object.keys(e.changedTouches).forEach((key: any) => {
+    const touch = e.changedTouches[key];
+    if (touch && touch.target) {
+      const [offsetTop, offsetLeft] = getNodePosition(touch.target);
+      touches[touch.identifier] = {
+        identifier: touch.identifier,
+        x: touch.clientX - offsetLeft,
+        y: touch.clientY - offsetTop,
+      };
+    }
+  });
+  return { type, touches, timestamp: e.timeStamp || Date.now() };
+}
+
 
 const createApp = (...args) => {
   const container = new Container()
@@ -125,6 +173,8 @@ const createApp = (...args) => {
       width: dom.clientWidth
     })
     mount(view)
+
+    initTouch(dom, e => container.handleTouch(createVuvasTouchEvent(e)))
 
     container.draw(true)
 
