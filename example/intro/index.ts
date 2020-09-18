@@ -1,10 +1,9 @@
-import App from './App.vue'
-import createApp from '../../src/render/index'
-// import { createApp, createApp } from '@vue/runtime-dom'
-console.log('start intro')
-createApp(App).mount(document.querySelector('#app')!)
+import App from './Home.vue'
+import { createApp } from 'vue'
+import router from './router'
 
-// import App from './App.vue'
-// import { createApp } from '@vue/runtime-dom'
+const app = createApp(App)
 
-// createApp(App).mount('#app')
+app.use(router)
+
+app.mount('#app')

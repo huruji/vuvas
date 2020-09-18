@@ -88,6 +88,7 @@ module.exports = (env = {}) => ({
     hot: true,
     stats: 'minimal',
     contentBase: currentApp.base,
-    overlay: true
+    overlay: true,
+    historyApiFallback: true
   }
 })

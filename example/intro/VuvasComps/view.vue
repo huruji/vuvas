@@ -1,28 +1,20 @@
 <template>
   <View :style="styles.container">
-    <Navbar title="Overview"/>
-    <View :style="styles.entries">
-      <Entry label="Component" :onPress="log" />
-    </View>
+    <Text>test</Text>
   </View>
 </template>
 
 <script>
 import { ref } from "vue";
-import Navbar from "./Navbar.vue";
-import Entry from './Entry.vue'
 
 export default {
   components: {
-    Navbar,
-    Entry
   },
   data() {
 
   },
   methods: {
     log(str) {
-      debugger;
       console.log('str')
     }
   },
