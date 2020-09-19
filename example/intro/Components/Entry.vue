@@ -1,7 +1,7 @@
 <template>
   <Touchable :onPress="onPress" :style="styles.container">
     <Text :style="styles.label">{{label}}</Text>
-    <Image src="./entry.jpg" :style="styles.icon" />
+    <Image src="./assets/entry.jpg" :style="styles.icon" />
     <View :style="styles.line" />
   </Touchable>
 </template>
