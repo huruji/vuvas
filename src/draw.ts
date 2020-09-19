@@ -9,7 +9,7 @@ import {
 } from './util';
 
 import { Container } from './Container';
-import { RevasCanvas } from './Canvas';
+import { Vuvas } from './Vuvas';
 
 // import { autoCacheId, createCache, getCache } from './offscreen';
 
@@ -23,7 +23,7 @@ function getRadius(style: any) {
   };
 }
 
-export function drawNode(canvas: RevasCanvas, node: Node, container: Container) {
+export function drawNode(canvas: Vuvas, node: Node, container: Container) {
   const style = getMergedStyleFromNode(node, container.draw);
   const frame = getFrameFromNode(node);
 
@@ -102,7 +102,7 @@ export function drawNode(canvas: RevasCanvas, node: Node, container: Container) 
 // }
 
 function drawContent(
-  canvas: RevasCanvas,
+  canvas: Vuvas,
   node: Node,
   container: Container,
   style: any,
