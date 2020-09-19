@@ -95,7 +95,7 @@ export default class Text extends Node {
     this._isPureText = isPureText
   }
 
-  customDrawer(text: string) {
+  customDrawer() {
     if (this._isPureText) return
     const frame = this.frame;
     let content = ''
