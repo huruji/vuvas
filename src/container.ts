@@ -70,6 +70,7 @@ export class Container {
     }
     this._ready = false;
     const { _root, vuvas } = this;
+
     if (vuvas) {
       // if not unmounted
       if (this._reflow) {

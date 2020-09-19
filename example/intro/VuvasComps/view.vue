@@ -189,6 +189,8 @@ export default {
         scrollView: {
           container: {
             height: 55,
+            borderWidth: 1,
+            borderColor: 'red'
           },
           box: {
             width: 60,

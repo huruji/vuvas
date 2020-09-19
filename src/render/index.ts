@@ -92,7 +92,6 @@ const createApp = (...args) => {
       }
     },
     remove(child){
-
       const parent = child.parentNode
       if(parent) {
         parent.removeNode(child)
@@ -124,7 +123,9 @@ const createApp = (...args) => {
       el.setText(text)
     },
     parentNode(node){
-
+      if (node.type === 'ScrollViewContent') {
+        return node.parentNode.parentNode
+      }
       return node.parentNode
     },
     nextSibling(node){

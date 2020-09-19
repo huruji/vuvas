@@ -13,7 +13,6 @@ export function drawGradient(canvas: Vuvas, node: Node) {
   if (colors && colors.length > 0) {
     const { start = { x: 0, y: 0 }, end = { x: 1, y: 0 } } = node.props as LinearGradientProps;
     const frame = getFrameFromNode(node);
-    debugger;
     const grad = canvas.context.createLinearGradient(
       start.x * frame.width + frame.x,
       start.y * frame.height + frame.y,

@@ -7,7 +7,7 @@ import { Vuvas } from '../../vuvas'
 
 export type ScrollViewOffset = { x?: number; y?: number };
 
-export default class ScrollView extends Node {
+export default class ScrollViewContent extends Node {
   private _height = -1;
   private _contentHeight = -1;
   private _width = -1;
@@ -21,19 +21,66 @@ export default class ScrollView extends Node {
 
   _style:Record<string, any> = {  }
 
-  private _offset: ScrollViewOffset = { x: 0, y: 0 };
+  public offset: ScrollViewOffset = { x: 0, y: 0 };
 
   constructor(root: Vuvas, container: Container) {
-    super('ScrollView', {}, root, container)
-    this.setStyle(this._innerStyle)
+    super('ScrollViewContent', {}, root, container)
+    this.setStyle({})
     this._style = this._innerStyle
     this.setProps({
-      onLayout
+      onLayout: this._onContentLayout,
+      onTouchMove: this.scroller.touchMove,
+      onTouchStart: this.scroller.touchStart,
+      onTouchEnd: this.scroller.touchEnd
     })
+
   }
 
-  private _scroller = new Scroller(e => {
-    const { x = 0, y = 0 } = this._offset;
+  setStyle = (style: any, needParent = true) => {
+    const { offset, horizontal } = this.props;
+    this.scroller.horizontal = horizontal;
+    if (offset) {
+      this.offset = offset;
+      this.scroller.emit('none');
+    }
+    if (needParent) {
+      this.parent?.setStyle(style)
+    }
+  }
+
+  setProps = (props: any) => {
+    this.props = Object.assign({}, this.props, props)
+    const { offset } = this.props;
+    let { horizontal } = this.props;
+    if (horizontal === false || horizontal === undefined) {
+      horizontal = false;
+    } else {
+      horizontal = true;
+    }
+    this.props.horizontal = horizontal
+    this.style!.flexDirection = horizontal ? 'row' : 'column';
+    if (horizontal) {
+      this.style!.height = '100%'
+    } else {
+      this.style!.width = '100%'
+    }
+    this.style.borderWidth = 1;
+    this.style.borderColor = 'red'
+    //  = Object.assign({}, style || {}, this._innerStyle, {
+    //   flexDirection: horizontal ? 'row' : 'column',
+    //   [horizontal ? 'height' : 'width']: '100%',
+    // })
+    // this.style.flexDirection = horizontal ? 'row' : 'column';
+    // if (horizontal) {
+    //   this.style.height = '100%'
+    // } else {
+    //   this.style.width = '100%'
+    // }
+    this.setStyle({...(this.style || {})}, false)
+  }
+
+  public scroller = new Scroller(e => {
+    const { x = 0, y = 0 } = this.offset;
     this.props.horizontal ?
       this._innerStyle.translateX.setValue(x - e.x) :
       this._innerStyle.translateY.setValue(y - e.y);
@@ -47,29 +94,25 @@ export default class ScrollView extends Node {
     }
   });
 
-  private _onLayout = (frame: Frame) => {
-    if (this._width !== frame.width || this._height !== frame.height) {
-      this._height = frame.height;
-      this._width = frame.width;
-      this._checkLayout();
-      if (this.props.paging) {
-        if (this.props.horizontal) {
-          this._scroller.pagingX = this.props.paging === true ? frame.width : this.props.paging;
-        } else {
-          this._scroller.pagingY = this.props.paging === true ? frame.height : this.props.paging;
-        }
-      }
+  private _onContentLayout = (frame: Frame) => {
+    const { x = 0, y = 0 } = this.offset;
+    const width = frame.width + x;
+    const height = frame.height + y;
+    if (this._contentWidth !== width || this._contentHeight !== height) {
+      this._contentHeight = height;
+      this._contentWidth = width;
+      this.checkLayout();
     }
-    this.props.onLayout && this.props.onLayout(frame);
   };
 
-  private _checkLayout = () => {
+  public checkLayout = () => {
     const maxX = this._contentWidth - this._width;
     const maxY = this._contentHeight - this._height;
-    if ((maxX > 0 && maxX !== this._scroller.maxX) || (maxY > 0 && maxY !== this._scroller.maxY)) {
-      this._scroller.maxX = maxX;
-      this._scroller.maxY = maxY;
-      this._scroller.emit('none');
+    if ((maxX > 0 && maxX !== this.scroller.maxX) || (maxY > 0 && maxY !== this.scroller.maxY)) {
+      this.scroller.maxX = maxX;
+      this.scroller.maxY = maxY;
+      this.scroller.emit('none');
     }
   };
+
 }

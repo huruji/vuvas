@@ -30,6 +30,9 @@ export class Node<T = any> {
     this.props = Object.assign({}, this.props, props)
   }
   public appendChild = (child: Node, anchor?: Node) => {
+    if (child.type === 'ScrollViewContent') {
+      child = child.parent
+    }
     if(!anchor) {
       this.children.push(child)
       child.nextSibling = null
@@ -45,6 +48,9 @@ export class Node<T = any> {
   }
 
   removeChild = (child: Node) => {
+    if (child.type === 'ScrollViewContent') {
+      child = child.parent
+    }
     const index = this.children.indexOf(child)
     if(index >= 0) {
       this.children.splice(index, 1)

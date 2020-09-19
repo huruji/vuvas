@@ -11,7 +11,6 @@ export default class LinearGradient extends Node {
   }
 
   customDrawer() {
-    debugger;
     drawGradient(this.canvas, this)
   }
 }

@@ -14,7 +14,10 @@ const nodeMap: Record<string, (root: Vuvas, container: Container) => Node> = {
   'Image': (root:Vuvas, container: Container) => new Image(root, container),
   'Touchable': (root:Vuvas, container: Container) => new Touchable(root, container),
   'LinearGradient': (root:Vuvas, container: Container) => new LinearGradient(root, container),
-  'ScrollView': (root:Vuvas, container: Container) => new ScrollView(root, container),
+  'ScrollView': (root:Vuvas, container: Container) => {
+    const scroll = new ScrollView(root, container)
+    return scroll.content
+  },
 }
 export const getNode = (type: string, root: Vuvas, container: Container) => {
   if(!nodeMap[type]) {
