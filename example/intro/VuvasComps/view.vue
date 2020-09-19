@@ -25,9 +25,7 @@
     </Panel>
     <Panel label="Image" cache>
       <View :style="styles.rowLeft">
-        <PanelItem
-          label="contain"
-        >
+        <PanelItem label="contain">
           <Image :style="[styles.view.base, styles.image.contain]" src="./assets/avatar.jpg" />
         </PanelItem>
         <PanelItem label="cover">
@@ -37,8 +35,45 @@
     </Panel>
     <Panel label="Touchable">
       <Touchable :style="styles.button.container" :onPress="log">
-          <Text :style="styles.button.text">Button</Text>
+        <Text :style="styles.button.text">Button</Text>
       </Touchable>
+    </Panel>
+    <Panel label="ScrollView">
+      <ScrollView horizontal :style="styles.scrollView.container">
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">1</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">2</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">3</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">4</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">5</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">6</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">7</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">8</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">9</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">10</Text>
+        </View>
+        <View :style="styles.scrollView.box">
+          <Text :style="styles.scrollView.text">11</Text>
+        </View>
+      </ScrollView>
     </Panel>
     <Panel label="LinearGradient" cache>
       <LinearGradient :style="styles.gradient" :colors="['#C48DF1', '#91D5FF', '#40A9FF']" />
@@ -50,18 +85,18 @@
 import { ref } from "vue";
 import Navbar from "../Components/Navbar.vue";
 import Panel from "../Components/Panel.vue";
-import PanelItem from '../Components/PanelItem.vue'
+import PanelItem from "../Components/PanelItem.vue";
 
 export default {
   components: {
     Navbar,
     Panel,
-    PanelItem
+    PanelItem,
   },
   data() {},
   methods: {
     log(str) {
-      alert('press')
+      alert("press");
     },
   },
   setup() {
@@ -86,8 +121,8 @@ export default {
         },
         gradient: {
           height: 40,
-          borderColor: 'red',
-          borderWidth: 1
+          borderColor: "red",
+          borderWidth: 1,
         },
         button: {
           container: {
