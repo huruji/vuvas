@@ -22,6 +22,8 @@ export default class Image extends Node {
       if (src) {
         imageLoader.get(src, this.onReady);
       }
+    } else {
+      this.onReady()
     }
   }
 
