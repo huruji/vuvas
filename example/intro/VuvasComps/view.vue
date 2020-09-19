@@ -40,6 +40,9 @@
           <Text :style="styles.button.text">Button</Text>
       </Touchable>
     </Panel>
+    <Panel label="LinearGradient" cache>
+      <LinearGradient :style="styles.gradient" :colors="['#C48DF1', '#91D5FF', '#40A9FF']" />
+    </Panel>
   </View>
 </template>
 
@@ -83,6 +86,8 @@ export default {
         },
         gradient: {
           height: 40,
+          borderColor: 'red',
+          borderWidth: 1
         },
         button: {
           container: {
