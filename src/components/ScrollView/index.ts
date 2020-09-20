@@ -9,9 +9,9 @@ import { Vuvas } from '../../vuvas';
 export type ScrollViewOffset = { x?: number; y?: number; };
 
 export default class ScrollView extends Node {
-  private _height = -1;
+  public height = -1;
   private _contentHeight = -1;
-  private _width = -1;
+  public width = -1;
   private _contentWidth = -1;
   public content: ScrollViewContent | null = null;
 
@@ -34,34 +34,11 @@ export default class ScrollView extends Node {
     this.style = Object.assign({}, style || {});
   };
 
-  setProps(props: Record<string, any>) {
-    // this.props = Object.assign({}, this.props, props)
-    // const { offset } = this.props;
-    // let { horizontal } = this.props;
-    // if (horizontal === false || horizontal === undefined) {
-    //   horizontal = false;
-    // } else {
-    //   horizontal = true;
-    // }
-    // this.content?.setProps({
-    //   offset,
-    //   horizontal
-    // })
-    // this.style.flexDirection = horizontal ? 'row' : 'column';
-    // if (horizontal) {
-    //   this.style.height = '100%'
-    // } else {
-    //   this.style.width = '100%'
-    // }
-    // this.content?.setStyle({})
-    // return this.content;
-  }
-
 
   private _onLayout = (frame: Frame) => {
-    if (this._width !== frame.width || this._height !== frame.height) {
-      this._height = frame.height;
-      this._width = frame.width;
+    if (this.width !== frame.width || this.height !== frame.height) {
+      this.height = frame.height;
+      this.width = frame.width;
       this.content!.checkLayout();
       if (this.props.paging) {
         if (this.props.horizontal) {

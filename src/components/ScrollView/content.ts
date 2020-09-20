@@ -79,7 +79,7 @@ export default class ScrollViewContent extends Node {
     this.props.horizontal ?
       this._innerStyle.translateX.setValue(x - e.x) :
       this._innerStyle.translateY.setValue(y - e.y);
-    this.container.draw(true)
+    this._onContentLayout(this.frame)
     switch (e.type) {
       case 'scroll':
         return this.props.onScroll && this.props.onScroll(e);
@@ -94,16 +94,18 @@ export default class ScrollViewContent extends Node {
     const { x = 0, y = 0 } = this.offset;
     const width = frame.width + x;
     const height = frame.height + y;
+
     if (this._contentWidth !== width || this._contentHeight !== height) {
       this._contentHeight = height;
       this._contentWidth = width;
       this.checkLayout();
     }
+    this.checkLayout();
   };
 
   public checkLayout = () => {
-    const maxX = this._contentWidth - this._width;
-    const maxY = this._contentHeight - this._height;
+    const maxX = this._contentWidth - this.parent!.width;
+    const maxY = this._contentHeight - this.parent!.height;
     if ((maxX > 0 && maxX !== this.scroller.maxX) || (maxY > 0 && maxY !== this.scroller.maxY)) {
       this.scroller.maxX = maxX;
       this.scroller.maxY = maxY;
