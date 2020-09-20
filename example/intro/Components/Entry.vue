@@ -21,7 +21,6 @@ export default {
           height: 58,
           justifyContent: "center",
           paddingLeft: 20,
-          backgroundColor: 'red'
         },
         label: {
           color: "#191919",

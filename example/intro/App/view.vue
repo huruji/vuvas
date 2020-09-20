@@ -2,7 +2,11 @@
   <View :style="styles.container">
     <Navbar title="Overview"/>
     <View :style="styles.entries">
-      <Entry label="Component" :onPress="log" />
+      <Entry label="Component" :onPress="() => goTo('/coms')" />
+      <Entry label="Style" :onPress="() => goTo('/style')" />
+      <Entry label="Animation" :onPress="() => goTo('/animation')" />
+      <Entry label="Gesture" :onPress="() => goTo('/gesture')" />
+      <Entry label="About" :onPress="() => goTo('about')" />
     </View>
   </View>
 </template>
@@ -21,10 +25,10 @@ export default {
 
   },
   methods: {
-    log(str) {
-      $router.push('/coms')
-      debugger;
-      console.log('str')
+    goTo(route) {
+      if(!route) return
+      $router.push(route)
+
     }
   },
   setup() {

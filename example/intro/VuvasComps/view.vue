@@ -121,8 +121,6 @@ export default {
         },
         gradient: {
           height: 40,
-          borderColor: "red",
-          borderWidth: 1,
         },
         button: {
           container: {
@@ -141,6 +139,7 @@ export default {
         image: {
           contain: {
             resizeMode: "contain",
+            backgroundColor: "#D8D8D8"
           },
         },
         text: {
@@ -169,7 +168,7 @@ export default {
           base: {
             width: 60,
             height: 55,
-            backgroundColor: "#D8D8D8",
+            backgroundColor: "#40b883",
           },
           radius: {
             borderRadius: 5,
@@ -179,18 +178,16 @@ export default {
             borderColor: "#979797",
           },
           shadow: {
-            backgroundColor: "white",
+            // backgroundColor: "white",
             shadowOffsetX: 0,
             shadowOffsetY: 2,
             shadowBlur: 6,
-            shadowColor: "rgba(0, 0, 0, 0.3)",
+            shadowColor: "red",
           },
         },
         scrollView: {
           container: {
             height: 55,
-            borderWidth: 1,
-            borderColor: 'red'
           },
           box: {
             width: 60,
