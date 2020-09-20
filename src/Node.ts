@@ -40,10 +40,13 @@ export class Node<T = any> {
     }
     const index = this.children.indexOf(anchor)
     if(index >= 0) {
-      this.children.splice(index + 1, 0, child);
+      this.children.splice(index, 0, child);
       child.parent = this
-      anchor.nextSibling = child
-      child.nextSibling = this.children[index + 2] || null
+      child.nextSibling = anchor
+      if(index - 1 >= 0) {
+        this.children[index - 1].nextSibling = child
+      }
+      // child.nextSibling = this.children[index + 2] || null
     }
   }
 
