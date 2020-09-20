@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts">
-import createApp from '../../../src/render/index'
+import { createApp } from 'vuvas'
 import App from './view.vue'
 export default {
   mounted() {

@@ -1,0 +1,1 @@
+export { default as createApp } from './render/index'

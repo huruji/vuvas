@@ -8,7 +8,7 @@ const app = process.env.APP || 'intro'
 const appMap = {
   timeline: {
     base: path.resolve(__dirname, './example/timeline'),
-    entry: path.resolve(__dirname, './example/timeline/index.ts')
+    entry: path.resolve(__dirname, './example/timeline/index.ts'),
   },
   intro: {
     base: path.resolve(__dirname, './example/intro'),
@@ -33,6 +33,7 @@ module.exports = (env = {}) => ({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
+      'vuvas': path.resolve(__dirname, 'packages/core/src/index')
     },
     extensions: ['.wasm', '.mjs', '.js', '.json', '.ts', '.tsx']
   },

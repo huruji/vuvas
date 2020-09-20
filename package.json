@@ -1,5 +1,5 @@
 {
-  "name": "vuvas",
+  "name": "vuvas-repo",
   "version": "1.0.0",
   "description": "use vue.js + canvas build ui inspired by revas",
   "main": "index.js",
@@ -23,15 +23,15 @@
   },
   "homepage": "https://github.com/huruji/vuvas#readme",
   "dependencies": {
-    "@vue/runtime-core": "^3.0.0-rc.10",
-    "@vue/runtime-dom": "^3.0.0-rc.10",
+    "@vue/runtime-core": "^3.0.0",
+    "@vue/runtime-dom": "^3.0.0",
     "bezier-easing": "^2.1.0",
     "hammer-touchemulator": "0.0.2",
     "jsdom": "^16.4.0",
     "jsdom-global": "^3.0.2",
     "pretty": "^2.0.0",
     "ts-node": "^9.0.0",
-    "vue": "^3.0.0-rc.10",
+    "vue": "^3.0.0",
     "vue-router": "^4.0.0-beta.4",
     "yoga-layout-wasm": "^1.9.3-alpha.7"
   },
