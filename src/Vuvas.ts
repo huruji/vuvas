@@ -1,10 +1,12 @@
 export class Vuvas {
   public canvas: HTMLCanvasElement
   public deviceRatio: number
+  public readonly transform: Transform;
 
   constructor(canvas: HTMLCanvasElement, deviceRatio: number) {
     this.canvas= canvas
     this.deviceRatio = deviceRatio
+    this.transform = new Transform(this.context)
   }
 
   get context() {

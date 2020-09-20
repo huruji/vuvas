@@ -22,11 +22,17 @@ export default class ScrollViewContent extends Node {
   _style:Record<string, any> = {  }
 
   public offset: ScrollViewOffset = { x: 0, y: 0 };
+  public onTouchMove:any
+  public onTouchStart: any
+  public onTouchEnd: any
 
   constructor(root: Vuvas, container: Container) {
     super('ScrollViewContent', {}, root, container)
     this.setStyle({})
     this._style = this._innerStyle
+    this.onTouchMove = this.scroller.touchMove
+    this.onTouchStart = this.scroller.touchStart
+    this.onTouchEnd = this.scroller.touchEnd
     this.setProps({
       onLayout: this._onContentLayout,
       onTouchMove: this.scroller.touchMove,
@@ -46,6 +52,7 @@ export default class ScrollViewContent extends Node {
     if (needParent) {
       this.parent?.setStyle(style)
     }
+    this.style = Object.assign({}, style || {}, this._innerStyle)
   }
 
   setProps = (props: any) => {
@@ -64,18 +71,6 @@ export default class ScrollViewContent extends Node {
     } else {
       this.style!.width = '100%'
     }
-    this.style.borderWidth = 1;
-    this.style.borderColor = 'red'
-    //  = Object.assign({}, style || {}, this._innerStyle, {
-    //   flexDirection: horizontal ? 'row' : 'column',
-    //   [horizontal ? 'height' : 'width']: '100%',
-    // })
-    // this.style.flexDirection = horizontal ? 'row' : 'column';
-    // if (horizontal) {
-    //   this.style.height = '100%'
-    // } else {
-    //   this.style.width = '100%'
-    // }
     this.setStyle({...(this.style || {})}, false)
   }
 
@@ -84,6 +79,7 @@ export default class ScrollViewContent extends Node {
     this.props.horizontal ?
       this._innerStyle.translateX.setValue(x - e.x) :
       this._innerStyle.translateY.setValue(y - e.y);
+    this.container.draw(true)
     switch (e.type) {
       case 'scroll':
         return this.props.onScroll && this.props.onScroll(e);
