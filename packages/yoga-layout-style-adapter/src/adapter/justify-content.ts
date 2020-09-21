@@ -1,4 +1,4 @@
-import { yoga as Yoga } from '../../init'
+import { yoga as Yoga } from '../init'
 
 export const JUSTIFYCONTENT_ADAPTER = {
   'center': () => Yoga.JUSTIFY_CENTER,

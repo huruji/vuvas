@@ -1,5 +1,3 @@
-import 'hammer-touchemulator'
-
 import { Node, VuvasTouch, VuvasTouchEvent } from '../Node'
 
 import { Container } from '../container'

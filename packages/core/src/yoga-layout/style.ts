@@ -165,13 +165,6 @@ function init() {
 
 promise.then(init);
 
-// function _apply(yoga: Yoga.YogaNode, style: any) {
-//   for (const key in style) {
-//     const func = STYLE_MAP[key]
-//     func && checkAndRun(yoga, ...func(style[key]))
-//   }
-// }
-
 const cache = new WeakMap<any, StyleParams[]>();
 
 function _apply(yoga: YogaNode, style: any) {

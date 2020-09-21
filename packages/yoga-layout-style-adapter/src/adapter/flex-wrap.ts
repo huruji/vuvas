@@ -1,4 +1,4 @@
-import { yoga as Yoga } from '../../init'
+import { yoga as Yoga } from '../init'
 
 export const FLEXWRAP_ADAPTER = {
   'wrap': Yoga.WRAP_WRAP,

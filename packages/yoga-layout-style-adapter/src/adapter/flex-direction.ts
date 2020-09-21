@@ -1,4 +1,4 @@
-import { yoga as Yoga } from '../../init'
+import { yoga as Yoga } from '../init'
 
 export const FLEXDIRECTION_ADAPTER = {
   'column': () => Yoga.FLEX_DIRECTION_COLUMN,

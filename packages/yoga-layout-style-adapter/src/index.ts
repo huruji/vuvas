@@ -269,6 +269,7 @@ function applyStyle(node: YogaNode, style: Partial<CSSProperty>) {
 }
 
 export function setStyle(node: YogaNode, style: Partial<CSSProperty>) {
+  console.log('style', style)
   if(Yoga._ready) {
     applyStyle(node, style)
   } else {

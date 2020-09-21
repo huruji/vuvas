@@ -1,4 +1,4 @@
-import { yoga as Yoga } from '../../init'
+import { yoga as Yoga } from '../init'
 
 export const ALIGN_ADAPTER = {
   auto: () => Yoga.ALIGN_AUTO,

@@ -1,4 +1,4 @@
-import { yoga as Yoga } from '../../init'
+import { yoga as Yoga } from '../init'
 
 export const DISPLAY_ADAPTER = {
   flex: Yoga.DISPLAY_FLEX,
