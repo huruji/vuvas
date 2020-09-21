@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import Animation from './Animation/index.vue'
 import App from './App/index.vue'
 import Style from './Style/index.vue'
 import VuvasComponents from './VuvasComps/index.vue'
@@ -20,6 +21,10 @@ const router = createRouter({
     {
       path: '/style',
       component: Style
+    },
+    {
+      path: '/animation',
+      component: Animation
     }
   ]
 })
