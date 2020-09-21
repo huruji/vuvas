@@ -1,0 +1,48 @@
+{
+	"name": "yoga-layout-style-adapter",
+	"version": "1.1.0",
+	"description": "",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"source": "index.ts",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "microbundle build --entry index.ts --output dist/index.js",
+		"release": "npm run build && standard-version && git push --follow-tags origin master && npm publish",
+		"release:first": "npm run build && standard-version --first-release && git push --follow-tags origin master && npm publish",
+		"release:major": "npm run build && standard-version --release-as major && git push --follow-tags origin master && npm publish",
+		"release:minor": "npm run build && standard-version --release-as minor && git push --follow-tags origin master && npm publish",
+		"release:patch": "npm run build && standard-version --release-as patch && git push --follow-tags origin master && npm publish"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"keywords": [],
+	"author": "huruji",
+	"license": "ISC",
+	"devDependencies": {
+		"@commitlint/cli": "^7.5.2",
+		"@typescript-eslint/eslint-plugin": "^1.6.0",
+		"@typescript-eslint/parser": "^1.6.0",
+		"bili": "^4.7.2",
+		"eslint": "^5.16.0",
+		"eslint-config-prettier": "^4.1.0",
+		"eslint-config-standard": "^12.0.0",
+		"eslint-plugin-import": "^2.17.1",
+		"eslint-plugin-node": "^8.0.1",
+		"eslint-plugin-prettier": "^3.0.1",
+		"eslint-plugin-promise": "^4.1.1",
+		"eslint-plugin-standard": "^4.0.0",
+		"husky": "^1.3.1",
+		"lint-staged": "^8.1.5",
+		"microbundle": "^0.11.0",
+		"prettier": "^1.17.0",
+		"rollup-plugin-typescript2": "^0.20.1",
+		"standard-version": "^8.0.1",
+		"typescript": "^3.4.1"
+	},
+	"dependencies": {
+		"yoga-layout-wasm": "^1.9.3-alpha.7"
+	}
+}

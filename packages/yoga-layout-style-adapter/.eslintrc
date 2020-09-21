@@ -1,0 +1,19 @@
+{
+	"root": true,
+	"globals": {
+		"window": true
+	},
+	"extends": [ "plugin:@typescript-eslint/recommended", "prettier", "prettier/@typescript-eslint" ],
+	"plugins": [ "@typescript-eslint" ],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"rules": {
+		"@typescript-eslint/explicit-member-accessibility": [ "off" ],
+		"@typescript-eslint/explicit-function-return-type": [ "off" ],
+		"@typescript-eslint/camelcase": 0,
+		"@typescript-eslint/no-parameter-properties": ["off"]
+	}
+}
