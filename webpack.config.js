@@ -33,7 +33,8 @@ module.exports = (env = {}) => ({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      'vuvas': path.resolve(__dirname, 'packages/core/src/index')
+      'vuvas': path.resolve(__dirname, 'packages/core/src/index'),
+      '@vue/runtime-core': path.resolve(__dirname, 'node_modules/@vue/runtime-core')
     },
     extensions: ['.wasm', '.mjs', '.js', '.json', '.ts', '.tsx']
   },

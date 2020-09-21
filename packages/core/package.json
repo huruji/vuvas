@@ -24,32 +24,12 @@
   "homepage": "https://github.com/huruji/vuvas#readme",
   "dependencies": {
     "@vue/runtime-core": "^3.0.0",
-    "@vue/runtime-dom": "^3.0.0",
     "bezier-easing": "^2.1.0",
-    "hammer-touchemulator": "0.0.2",
-    "jsdom": "^16.4.0",
-    "jsdom-global": "^3.0.2",
-    "pretty": "^2.0.0",
-    "ts-node": "^9.0.0",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-beta.4",
+    "yoga-layout-style-adapter": "^1.0.1",
     "yoga-layout-wasm": "^1.9.3-alpha.7"
   },
   "devDependencies": {
-    "@babel/cli": "^7.11.6",
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@vue/compiler-sfc": "^3.0.0-rc.10",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^4.2.2",
-    "file-loader": "^6.0.0",
-    "mini-css-extract-plugin": "^0.11.0",
-    "ts-loader": "^7.0.2",
-    "typescript": "^4.0.2",
-    "url-loader": "^4.0.0",
-    "vue-loader": "^16.0.0-beta.5",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "lerna": "^3.19.0",
+    "typescript": "^4.0.2"
   }
 }

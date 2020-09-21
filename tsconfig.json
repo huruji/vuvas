@@ -13,6 +13,10 @@
     "esModuleInterop": true,
     "removeComments": false,
     "jsx": "preserve",
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom"],
+    "baseUrl": "./",
+    "paths": {
+      "yoga-layout-style-adapter": ["./packages/yoga-layout-style-adapter/src"]
+    },
   }
 }
