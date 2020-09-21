@@ -16,14 +16,15 @@ export default {
       styles: {
         container: {
           height: 50,
-          backgroundColor: "#333",
+          // backgroundColor: "#333",
           justifyContent: "center",
           zIndex: 100,
+          backgroundColor: '#fff',
         },
         title: {
           textAlign: "center",
-          color: "#fff",
-          fontSize: 17,
+          color: "#40b883",
+          fontSize: 24,
           fontWeight: "600",
         },
         icon: {
