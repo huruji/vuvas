@@ -65,12 +65,51 @@ Vuvas 内置了帮助我们构建 UI 的基础组件，可以把这些组件视�
 
 基础的布局组件，类似于 dom 中的 div、section 标签，例子：
 
+代码：
+
+> 在 [code sandbox](https://codesandbox.io/s/view-component-qfo7j) 中打开
+
 ```html
 <template>
   <View :style="styles.container">
+    <View :style="styles.content"></View>
   </View>
 </template>
+<script>
+export default {
+  setup() {
+    return {
+      styles: {
+        container: {
+          backgroundColor: '#fff',
+          justifyContent: 'center',
+          flex: 1,
+          alignItems: 'center'
+        },
+        content: {
+          height: 200,
+          width: 400,
+          backgroundColor: '#41b883',
+          borderWidth: 4,
+          borderColor: '#35495e'
+        }
+      },
+    };
+  },
+};
+</script>
 ```
+
+效果：
+
+![](./assets/View.png)
+
+<iframe src="https://codesandbox.io/embed/view-component-qfo7j?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="view-component"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
 ### Text
 
