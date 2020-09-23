@@ -92,4 +92,23 @@ Vuvas 内置了帮助我们构建 UI 的基础组件，可以把这些组件视�
 
 ```
 
+### Touchable
+
+可触发 touch 事件的组件，使用这个组件可以添加 touchStart、touchMove、touchEnd、touchCancel 事件，例如实现一个 Button：
+
+```html
+<template>
+  <Touchable  :onPress="log">
+    <Text :style="styles.button.text">Button</Text>
+  </Touchable>
+</template>
+```
+
+### ScrollView
+
+可滚动的组件，通过这个组件可以包裹其他组件来实现滚动效果：
+
+```html
+```
+
 

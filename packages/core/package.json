@@ -1,15 +1,17 @@
 {
-  "name": "vuvas-repo",
+  "name": "vuvas",
   "version": "1.0.0",
   "description": "use vue.js + canvas build ui inspired by revas",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "source": "src/index.ts",
   "directories": {
     "example": "example"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:demo": "webpack-dev-server",
-    "build": "webpack --env.prod"
+    "build": "bili --format esm --format cjs",
+    "prepublishOnly": ""
   },
   "repository": {
     "type": "git",
@@ -25,11 +27,13 @@
   "dependencies": {
     "@vue/runtime-core": "^3.0.0",
     "bezier-easing": "^2.1.0",
-    "yoga-layout-style-adapter": "^1.0.1",
     "yoga-layout-wasm": "^1.9.3-alpha.7"
   },
   "devDependencies": {
+    "@babel/compat-data": "^7.11.0",
+    "bili": "^5.0.5",
     "lerna": "^3.19.0",
+    "rollup-plugin-typescript2": "^0.27.2",
     "typescript": "^4.0.2"
   }
 }

@@ -5,8 +5,9 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "allowJs": false,
+    "allowJs": true,
     "strict": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
@@ -16,7 +17,7 @@
     "lib": ["esnext", "dom"],
     "baseUrl": "./",
     "paths": {
-      "yoga-layout-style-adapter": ["./packages/yoga-layout-style-adapter/src"]
+      // "yoga-layout-style-adapter": ["./packages/yoga-layout-style-adapter/src"]
     },
   }
 }
