@@ -104,50 +104,223 @@ export default {
 
 ![](./assets/View.png)
 
-<iframe src="https://codesandbox.io/embed/view-component-qfo7j?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="view-component"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
-
 ### Text
 
 文本标签，可以在标签内部添加文字，类似 dom 中的 p 标签，例子：
 
+代码：
+
+> 在 [code sandbox](https://codesandbox.io/s/text-component-wcs6d) 中打开
+
 ```html
 <template>
   <View :style="styles.container">
-    <Text> Vuvas </Text>
+    <Text :style="styles.text">Vuvas</Text>
   </View>
 </template>
+<script>
+export default {
+  setup() {
+    return {
+      styles: {
+        container: {
+          justifyContent: 'center',
+          flex: 1,
+          backgroundColor: '#41b883',
+        },
+        text: {
+          fontSize: 100,
+          fontWeight: 800,
+          color: '#fff',
+          height: 100,
+          fontFamily: 'zapfino',
+          textAlign: 'center'
+        }
+      },
+    };
+  },
+};
+</script>
 ```
+
+效果：
+
+![](./assets/Text.png)
 
 ### Image
 
 基本的图像标签，通过 src 属性链接图片地址，使用这个可以显示图片，类似 dom 的 img 标签，例子：
 
-```html
+代码：
 
+> 在 [code sandbox](https://codesandbox.io/s/image-component-dl41z) 中打开
+
+```html
+<template>
+  <View :style="styles.container">
+    <Image src="./src/vue.png" :style="styles.image" />
+  </View>
+</template>
+<script>
+export default {
+  setup() {
+    return {
+      styles: {
+        container: {
+          justifyContent: 'center',
+          flex: 1,
+          backgroundColor: '#fff',
+          alignItems: 'center'
+        },
+        image: {
+          height: 200,
+          width: 200,
+        }
+      },
+    };
+  },
+};
+</script>
 ```
+
+效果：
+
+![](./assets/Image.png)
 
 ### Touchable
 
 可触发 touch 事件的组件，使用这个组件可以添加 touchStart、touchMove、touchEnd、touchCancel 事件，例如实现一个 Button：
 
+代码：
+
+> 在 [code sandbox](https://codesandbox.io/s/touchable-component-mz140) 中打开
+
 ```html
 <template>
-  <Touchable  :onPress="log">
-    <Text :style="styles.button.text">Button</Text>
-  </Touchable>
+  <View :style="styles.container">
+    <View>
+      <Text :style="styles.text">{{ count }}</Text>
+      <Touchable :onPress="inc">
+        <View :style="styles.content">
+          <Text :style="styles.button">Add</Text>
+        </View>
+      </Touchable>
+    </View>
+  </View>
 </template>
+<script>
+import { ref } from "vue";
+export default {
+  setup() {
+    const count = ref(0);
+    const inc = () => {
+      count.value++;
+    };
+    return {
+      count,
+      inc,
+      styles: {
+        container: {
+          justifyContent: "center",
+          flex: 1,
+          backgroundColor: "#41b883",
+          alignItems: "center",
+        },
+        text: {
+          fontSize: 100,
+          fontWeight: 800,
+          color: "#fff",
+          height: 100,
+          fontFamily: "zapfino",
+          textAlign: "center",
+        },
+        content: {
+          backgroundColor: "#36495d",
+          height: 80,
+          width: 160,
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 16
+        },
+        button: {
+          color: '#fff',
+          fontSize: 40,
+          height: 80,
+          width: 200,
+          textAlign: 'center',
+        },
+      },
+    };
+  },
+};
+</script>
 ```
+
+效果：
+
+![](./assets/Touchable.gif)
 
 ### ScrollView
 
 可滚动的组件，通过这个组件可以包裹其他组件来实现滚动效果：
 
+代码：
+
+> 在 [code sandbox](https://codesandbox.io/s/scrollview-component-do7kp) 中打开
+
 ```html
+<template>
+  <View :style="styles.container">
+    <ScrollView horizontal :style="styles.scroll">
+      <View
+        :style="styles.box"
+        v-for="(num, index) in numbers"
+        :key="index"
+      >
+        <Text :style="styles.text">{{index + 1}}</Text>
+      </View>
+    </ScrollView>
+  </View>
+</template>
+<script>
+const numbers = [];
+for (let i = 0; i < 20; i++) {
+  numbers.push(i);
+}
+export default {
+  setup() {
+    return {
+      numbers,
+      styles: {
+        container: {
+          justifyContent: "center",
+          flex: 1,
+          backgroundColor: "#41b883",
+        },
+        scroll: {
+          height: 55,
+        },
+        box: {
+          width: 100,
+          height: 100,
+          justifyContent: "center",
+          backgroundColor: "#333",
+          marginRight: 10,
+        },
+        text: {
+          color: "#fff",
+          fontWeight: "600",
+          fontSize: 24,
+          textAlign: "center",
+        },
+      },
+    };
+  },
+};
+</script>
 ```
 
+效果：
+
+![](./assets/Scrollview.gif)
 
