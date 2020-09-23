@@ -4,8 +4,8 @@ import { AnimatedValue } from '../../Animated';
 import { Container } from '../../container'
 import { Vuvas } from '../../vuvas'
 
-export default class Touchable extends Node {
-  private _style:Record<string, any> = {
+export default class Touchable extends Node<any> {
+  public _style:Record<string, any> = {
     opacity: new AnimatedValue(1),
     animated: true
   }

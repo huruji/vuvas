@@ -1,18 +1,14 @@
 import { Frame, Node } from '../../Node';
-import Scroller, { VuvasScrollEvent } from './Scroller';
 
-import { AnimatedValue } from '../../Animated';
 import { Container } from '../../container';
 import ScrollViewContent from './content';
 import { Vuvas } from '../../vuvas';
 
 export type ScrollViewOffset = { x?: number; y?: number; };
 
-export default class ScrollView extends Node {
+export default class ScrollView extends Node<any> {
   public height = -1;
-  private _contentHeight = -1;
   public width = -1;
-  private _contentWidth = -1;
   public content: ScrollViewContent | null = null;
 
   _style: Record<string, any> = {};

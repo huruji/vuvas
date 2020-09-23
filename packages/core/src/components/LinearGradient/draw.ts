@@ -1,4 +1,5 @@
-import { NodeProps } from '../../Node'
+import { Node, NodeProps } from '../../Node'
+
 import { Vuvas } from '../../Vuvas'
 import { getFrameFromNode } from '../../util'
 

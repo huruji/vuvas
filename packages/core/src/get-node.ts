@@ -8,7 +8,7 @@ import Touchable from './components/Touchable'
 import View from './components/View'
 import { Vuvas } from './vuvas'
 
-const nodeMap: Record<string, (root: Vuvas, container: Container) => Node> = {
+const nodeMap: Record<string, (root: Vuvas, container: Container) => Node<any>> = {
   'View': (root:Vuvas, container: Container) => new View(root, container),
   'Text': (root:Vuvas, container: Container) => new Text(root, container),
   'Image': (root:Vuvas, container: Container) => new Image(root, container),
@@ -16,7 +16,7 @@ const nodeMap: Record<string, (root: Vuvas, container: Container) => Node> = {
   'LinearGradient': (root:Vuvas, container: Container) => new LinearGradient(root, container),
   'ScrollView': (root:Vuvas, container: Container) => {
     const scroll = new ScrollView(root, container)
-    return scroll.content
+    return scroll.content as Node
   },
 }
 export const getNode = (type: string, root: Vuvas, container: Container) => {

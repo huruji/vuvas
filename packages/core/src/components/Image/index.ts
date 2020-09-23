@@ -1,11 +1,7 @@
 import * as imageLoader from './image-loader';
 
-import { DEFAULT_MEASURE, DrawTextOptions, applyTextStyle, drawText, measureText } from './drawtext';
-import { applyAnimated, flatten, getFrameFromNode } from '../../util';
-
 import { Container } from '../../container';
 import { Node } from '../../Node';
-import { Properties } from 'csstype';
 import { Vuvas } from '../../vuvas';
 import drawImage from './draw-image';
 
@@ -16,7 +12,7 @@ export default class Image extends Node {
     super('View', {}, root, container);
   }
 
-  customDrawer() {
+  public customDrawer = () => {
     if(!this.ready) {
       const { src } = this.props
       if (src) {

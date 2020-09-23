@@ -3,13 +3,12 @@ import { applyAnimated, flatten, getFrameFromNode } from '../../util';
 
 import { Container } from '../../container';
 import { Node } from '../../Node';
-import { Properties } from 'csstype';
 import { Vuvas } from '../../vuvas';
 
-export type TextProps = NodeProps & {
-  style?: any;
-  numberOfLines?: number;
-};
+// export type TextProps = NodeProps & {
+//   style?: any;
+//   numberOfLines?: number;
+// };
 const TEXT_STYLES_LIST = [
   'fontStyle',
   'fontWeight',
@@ -56,18 +55,6 @@ function textPropsChanged(left: DrawTextOptions, right?: DrawTextOptions) {
   return textStyleChanged(left.textStyle, right.textStyle);
 }
 
-function getTextFromNode(node: Text) {
-  const frame = getFrameFromNode(node);
-  if (frame.width > 0) {
-    const { content } = node;
-    if (typeof content === 'string') {
-      return content;
-    } else if (Array.isArray(content)) {
-      return content.join('');
-    }
-  }
-  return '';
-}
 
 function getTextStyleFromNode(node: Node) {
   const style = Object.assign({}, DEFAULT_TEXTSTYLE, ...flatten([node.style]));
@@ -95,7 +82,7 @@ export default class Text extends Node {
     this._isPureText = isPureText
   }
 
-  customDrawer() {
+  customDrawer = () => {
     if (this._isPureText) return
     const frame = this.frame;
     let content = ''

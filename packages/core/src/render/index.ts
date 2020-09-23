@@ -57,7 +57,7 @@ function createVuvasTouchEvent(e: TouchEvent): VuvasTouchEvent {
 }
 
 
-const createApp = (...args) => {
+const createApp = (...args: any) => {
   const container = new Container()
   const scale = window.devicePixelRatio;
   let dom:HTMLCanvasElement = createCanvas(scale)
@@ -95,9 +95,9 @@ const createApp = (...args) => {
         parent.removeNode(child)
       }
     },
-    createElement(type, isSvg, isCustomizedBuiltIn){
+    createElement(type, isSvg, isCustomizedBuiltIn): Node{
       const node = getNode(type, vuvas, container)
-      return node
+      return node as Node
     },
     createText(text: string){
       const textNode = getNode('Text', vuvas, container) as Text
@@ -105,9 +105,8 @@ const createApp = (...args) => {
       textNode.setPureText(true)
       return textNode
     },
-    createComment(text){
-
-      console.log('createElement')
+    createComment(text): any{
+      // console.log('createElement')
       return null
     },
     setText(node, text){
@@ -137,8 +136,7 @@ const createApp = (...args) => {
       // return ''
       // el.setAttribute(id, '')
     },
-    cloneNode(el){
-
+    cloneNode(el):any{
       return null;
       // return el.cloneNode(true)
     },
@@ -149,7 +147,7 @@ const createApp = (...args) => {
     }
   })
 
-  const app = render.createApp(...args);
+  const app  = render.createApp(args[0], args[1]) as any;
 
   const { mount } = app;
 

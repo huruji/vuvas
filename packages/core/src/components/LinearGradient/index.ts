@@ -10,7 +10,7 @@ export default class LinearGradient extends Node {
     this.setStyle(this._style)
   }
 
-  customDrawer() {
+  customDrawer = () => {
     drawGradient(this.canvas, this)
   }
 }

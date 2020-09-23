@@ -1,16 +1,16 @@
-import { Frame, Node } from '../../Node'
-import Scroller, { VuvasScrollEvent } from './Scroller'
+import { Frame, Node } from '../../Node';
 
-import { AnimatedValue } from '../../Animated'
-import { Container } from '../../container'
-import { Vuvas } from '../../vuvas'
+import { AnimatedValue } from '../../Animated';
+import { Container } from '../../container';
+import ScrollView from './index'
+import Scroller from './Scroller';
+import { Vuvas } from '../../vuvas';
 
-export type ScrollViewOffset = { x?: number; y?: number };
+export type ScrollViewOffset = { x?: number; y?: number; };
 
-export default class ScrollViewContent extends Node {
-  private _height = -1;
+export default class ScrollViewContent extends Node<any> {
+  public parent?: ScrollView;
   private _contentHeight = -1;
-  private _width = -1;
   private _contentWidth = -1;
   private _innerStyle = {
     translateX: new AnimatedValue(0),
@@ -19,26 +19,26 @@ export default class ScrollViewContent extends Node {
     animated: true,
   };
 
-  _style:Record<string, any> = {  }
+  _style: Record<string, any> = {};
 
   public offset: ScrollViewOffset = { x: 0, y: 0 };
-  public onTouchMove:any
-  public onTouchStart: any
-  public onTouchEnd: any
+  public onTouchMove: any;
+  public onTouchStart: any;
+  public onTouchEnd: any;
 
-  constructor(root: Vuvas, container: Container) {
-    super('ScrollViewContent', {}, root, container)
-    this.setStyle({})
-    this._style = this._innerStyle
-    this.onTouchMove = this.scroller.touchMove
-    this.onTouchStart = this.scroller.touchStart
-    this.onTouchEnd = this.scroller.touchEnd
+  constructor (root: Vuvas, container: Container) {
+    super('ScrollViewContent', {}, root, container);
+    this.setStyle({});
+    this._style = this._innerStyle;
+    this.onTouchMove = this.scroller.touchMove;
+    this.onTouchStart = this.scroller.touchStart;
+    this.onTouchEnd = this.scroller.touchEnd;
     this.setProps({
       onLayout: this._onContentLayout,
       onTouchMove: this.scroller.touchMove,
       onTouchStart: this.scroller.touchStart,
       onTouchEnd: this.scroller.touchEnd
-    })
+    });
 
   }
 
@@ -50,36 +50,35 @@ export default class ScrollViewContent extends Node {
       this.scroller.emit('none');
     }
     if (needParent) {
-      this.parent?.setStyle(style)
+      this.parent?.setStyle(style);
     }
-    this.style = Object.assign({}, style || {}, this._innerStyle)
-  }
+    this.style = Object.assign({}, style || {}, this._innerStyle);
+  };
 
   setProps = (props: any) => {
-    this.props = Object.assign({}, this.props, props)
-    const { offset } = this.props;
+    this.props = Object.assign({}, this.props, props);
     let { horizontal } = this.props;
     if (horizontal === false || horizontal === undefined) {
       horizontal = false;
     } else {
       horizontal = true;
     }
-    this.props.horizontal = horizontal
+    this.props.horizontal = horizontal;
     this.style!.flexDirection = horizontal ? 'row' : 'column';
     if (horizontal) {
-      this.style!.height = '100%'
+      this.style!.height = '100%';
     } else {
-      this.style!.width = '100%'
+      this.style!.width = '100%';
     }
-    this.setStyle({...(this.style || {})}, false)
-  }
+    this.setStyle({ ...(this.style || {}) }, false);
+  };
 
   public scroller = new Scroller(e => {
     const { x = 0, y = 0 } = this.offset;
     this.props.horizontal ?
       this._innerStyle.translateX.setValue(x - e.x) :
       this._innerStyle.translateY.setValue(y - e.y);
-    this._onContentLayout(this.frame)
+    this._onContentLayout(this.frame);
     switch (e.type) {
       case 'scroll':
         return this.props.onScroll && this.props.onScroll(e);

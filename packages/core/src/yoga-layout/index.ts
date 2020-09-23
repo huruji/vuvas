@@ -1,6 +1,5 @@
 import { Frame, Node } from '../Node';
 
-import { AppContextType } from '../../components/Context';
 import { yoga as Yoga } from './init';
 import type { YogaNode } from 'yoga-layout-wasm/asm';
 import apply from './style';
@@ -27,7 +26,7 @@ function _updateLayout(node: Node): [Function, YogaNode] {
   return [process, yoga];
 }
 
-export function updateLayout(root: Node<AppContextType>) {
+export function updateLayout(root: Node) {
   const [process, yoga] = _updateLayout(root);
   const { clientWidth, clientHeight, RTL } = root.props;
   yoga.calculateLayout(clientWidth, clientHeight, RTL ? Yoga.DIRECTION_RTL : Yoga.DIRECTION_LTR);
