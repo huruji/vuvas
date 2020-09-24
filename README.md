@@ -1,6 +1,15 @@
-# vuvas
 
 使用 vue 3.0 + css 在 canvas 上绘制高性能 UI
+
+
+- [原理](#原理)
+- [快速开始](#快速开始)
+- [组件](#组件)
+  - [View](#view)
+  - [Text](#text)
+  - [Image](#image)
+  - [Touchable](#touchable)
+  - [ScrollView](#scrollview)
 
 ## 原理
 
