@@ -1,7 +1,7 @@
+<h2 align="center">使用 vue 3.0 + css 在 canvas 上绘制高性能 UI</h2>
 
-使用 vue 3.0 + css 在 canvas 上绘制高性能 UI
 
-
+- [例子](#例子)
 - [原理](#原理)
 - [快速开始](#快速开始)
 - [组件](#组件)
@@ -10,6 +10,21 @@
   - [Image](#image)
   - [Touchable](#touchable)
   - [ScrollView](#scrollview)
+- [致谢](#致谢)
+
+## 例子
+<p style="text-align:center">
+  <img  width="100%" src="./assets/example.png" />
+</p>
+
+运行例子: [https://codesandbox.io/u/huruji/sandboxes](https://codesandbox.io/u/huruji/sandboxes)
+
+```bash
+npm run dev:demo
+```
+
+更多例子：
+
 
 ## 原理
 
@@ -333,3 +348,6 @@ export default {
 
 ![](./assets/Scrollview.gif)
 
+## 致谢
+
+vuvas 是 [revas](https://github.com/pinqy520/revas) 的 vue 实现版本，很多代码来自 [revas](https://github.com/pinqy520/revas)，感谢 [@pinqy520](https://github.com/pinqy520) 🙏🙏🙏

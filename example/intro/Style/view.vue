@@ -1,6 +1,6 @@
 <template>
   <View :style="styles.container">
-    <Navbar title="Components" />
+    <Navbar title="Style" />
     <ScrollView :style="styles.container">
     <View cache pointerEvents="none">
       <Panel label="Box">
