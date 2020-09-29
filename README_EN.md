@@ -1,46 +1,46 @@
-[English](./README_EN.md) | 中文
+English | [中文](./README.md)
 
-<h2 align="center">使用 vue 3.0 + css 在 canvas 上绘制高性能 UI</h2>
+<h2 align="center">Use vue 3.0 + css to draw high-performance UI on canvas</h2>
 
 
-- [例子](#例子)
-- [原理](#原理)
-- [快速开始](#快速开始)
-- [组件](#组件)
+- [Example](#example)
+- [Principle](#principle)
+- [Get Started](#get-started)
+- [Components](#components)
   - [View](#view)
   - [Text](#text)
   - [Image](#image)
   - [Touchable](#touchable)
   - [ScrollView](#scrollview)
-- [致谢](#致谢)
+- [Thanks](#thanks)
 
-## 例子
+## Example
 <p style="text-align:center">
   <img  width="100%" src="./assets/example.png" />
 </p>
 
-运行例子:
-
+run the example:
 ```bash
 npm run dev:demo
 ```
 
-更多例子：[https://codesandbox.io/u/huruji/sandboxes](https://codesandbox.io/u/huruji/sandboxes)
+more examples：[https://codesandbox.io/u/huruji/sandboxes](https://codesandbox.io/u/huruji/sandboxes)
 
 
-## 原理
 
-Vue 3.0 中 将 dom 的渲染器单独抽离为了 [@vue/runtime-dom](https://github.com/vuejs/vue-next/tree/master/packages/runtime-dom)，[@vue/runtime-dom](https://github.com/vuejs/vue-next/tree/master/packages/runtime-dom) 可以看作是基于 [@vue/runtime-core](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 提供的 API 构建的 web DOM 渲染器，[@vue/runtime-core](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 可以看作是与环境无关的 vue 核心实现，Vuvas 真是基于此来构建的 Canvas 环境下的渲染器。Vuvas 底层布局基于 [yoga-layout](https://github.com/facebook/yoga)，因此可以很方便的使用 css flexbox 来布局我们的页面。
+## Principle
 
-## 快速开始
+In Vue 3.0, the renderer of dom was separated into [@vue/runtime-dom](https://github.com/vuejs/vue-next/tree/master/packages/runtime-dom), [@vue/ runtime-dom](https://github.com/vuejs/vue-next/tree/master/packages/runtime-dom) can be regarded as based on [@vue/runtime-core](https://github.com /vuejs/vue-next/tree/master/packages/runtime-core) web DOM renderer built by the API provided, [@vue/runtime-core](https://github.com/vuejs/vue-next/ tree/master/packages/runtime-core) can be regarded as a core implementation of Vue that has nothing to do with the environment. Vuvas is really a renderer based on this in the Canvas environment. The underlying layout of Vuvas is based on [yoga-layout](https://github.com/facebook/yoga), so we can easily use css flexbox to layout our pages.
 
-安装
+## Get Started
+
+installation
 
 ```bash
 npm i vuvas -S
 ```
 
-使用
+use
 
 > index.ts
 
@@ -83,17 +83,17 @@ export default {
 </script>
 ```
 
-## 组件
+## Components
 
-Vuvas 内置了帮助我们构建 UI 的基础组件，可以把这些组件视作 Vuvas 环境下的标准组件（类似于 web 环境下的 div、p等标签）。
+Vuvas has built-in basic components that help us build UI. These components can be regarded as standard components in the Vuvas environment (similar to tags such as div and p in the web environment).
 
 ### View
 
-基础的布局组件，类似于 dom 中的 div、section 标签，例子：
+Basic layout components, similar to the div and section tags in dom, for example:
 
-代码：
+code：
 
-> 在 [code sandbox](https://codesandbox.io/s/view-component-qfo7j) 中打开
+> Open in [code sandbox](https://codesandbox.io/s/view-component-qfo7j)
 
 ```html
 <template>
@@ -126,17 +126,17 @@ export default {
 </script>
 ```
 
-效果：
+Result：
 
 ![](./assets/View.png)
 
 ### Text
 
-文本标签，可以在标签内部添加文字，类似 dom 中的 p 标签，例子：
+Text tag, you can add text inside the tag, similar to the p tag in dom, example:
 
-代码：
+code：
 
-> 在 [code sandbox](https://codesandbox.io/s/text-component-wcs6d) 中打开
+> Open in [code sandbox](https://codesandbox.io/s/text-component-wcs6d)
 
 ```html
 <template>
@@ -169,17 +169,17 @@ export default {
 </script>
 ```
 
-效果：
+Result：
 
 ![](./assets/Text.png)
 
 ### Image
 
-基本的图像标签，通过 src 属性链接图片地址，使用这个可以显示图片，类似 dom 的 img 标签，例子：
+The basic image tag, link the image address through the src attribute, use this to display the image, similar to the img tag of dom, for example:
 
-代码：
+code：
 
-> 在 [code sandbox](https://codesandbox.io/s/image-component-dl41z) 中打开
+> Open in [code sandbox](https://codesandbox.io/s/image-component-dl41z)
 
 ```html
 <template>
@@ -209,17 +209,17 @@ export default {
 </script>
 ```
 
-效果：
+Result：
 
 ![](./assets/Image.png)
 
 ### Touchable
 
-可触发 touch 事件的组件，使用这个组件可以添加 touchStart、touchMove、touchEnd、touchCancel 事件，例如实现一个 Button：
+A component that can trigger touch events. Use this component to add touchStart, touchMove, touchEnd, and touchCancel events, such as implementing a Button:
 
-代码：
+Code：
 
-> 在 [code sandbox](https://codesandbox.io/s/touchable-component-mz140) 中打开
+> Open in [code sandbox](https://codesandbox.io/s/touchable-component-mz140)
 
 ```html
 <template>
@@ -282,17 +282,17 @@ export default {
 </script>
 ```
 
-效果：
+Result：
 
 ![](./assets/Touchable.gif)
 
 ### ScrollView
 
-可滚动的组件，通过这个组件可以包裹其他组件来实现滚动效果：
+Scrollable components, through which other components can be wrapped to achieve the scrolling effect:
 
-代码：
+Code：
 
-> 在 [code sandbox](https://codesandbox.io/s/scrollview-component-do7kp) 中打开
+> Open in [code sandbox](https://codesandbox.io/s/scrollview-component-do7kp)
 
 ```html
 <template>
@@ -346,10 +346,10 @@ export default {
 </script>
 ```
 
-效果：
+Result：
 
 ![](./assets/Scrollview.gif)
 
-## 致谢
+## Thanks
 
-vuvas 是 [revas](https://github.com/pinqy520/revas) 的 vue 实现版本，感谢 [@pinqy520](https://github.com/pinqy520) 🙏🙏🙏
+vuvas is the vue implementation version of [revas](https://github.com/pinqy520/revas), thanks [@pinqy520](https://github.com/pinqy520) 🙏🙏🙏
